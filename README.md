@@ -16,9 +16,4 @@ A Django web application for managing student records, including details such as
 - Bootstrap
 - SQLite (default database)
 
-## Admin Access
 
-Create a superuser to access the admin panel:
-
-```bash
-python manage.py createsuperuser
