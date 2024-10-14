@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-R-U-D APP</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            background: radial-gradient(circle at top left, #1e1e1e, #050505);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #f2f0ef;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            text-shadow: 0 0 10px #ff5722, 0 0 20px #007bff, 0 0 40px #ff5722, 0 0 80px #007bff;
+            animation: fadeInDown 1s ease-in-out;
+        }
+        .home-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .card {
+            width: 18rem;
+            height: 15rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-header {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .card-body p {
+            font-size: 1rem;
+            text-align: center;
+        }
+        .card button {
+            margin-top: 10px;
+            width: 100%;
+            background-color: #020200;
+            color: white;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .card.text-bg-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .card.text-bg-info {
+            background-color: #de450e;
+            color: white;
+        }
+        .link-button {
+            text-decoration: none;
+            color: rgb(245, 244, 244);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .message-container {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .alert {
+            color: white;
+            background-color: rgba(0, 123, 255, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>C-R-U-D APP</h1>
+    <div class="message-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="home-container">
+        <div class="card text-bg-primary">
+            <div class="card-header">Create Student Form</div>
+            <div class="card-body">
+                <p class="card-text">You can add the Students data in this form.</p>
+                <button class="btn">
+                    <a href="{% url 'student_form' %}" target="_blank" class="link-button">Create</a>
+                </button>
+            </div>
+        </div>
+
+        <div class="card text-bg-info">
+            <div class="card-header">Read Student Data</div>
+            <div class="card-body">
+                <p class="card-text">You can view Students details here in table form</p>
+                <button class="btn">
+                    <a href="{% url 'read_stud' %}" target="_blank" class="link-button">View</a>
+                </button>
+            </div>
+        </div>
+        <div class="card text-bg-primary">
+            <div class="card-header">Update Student</div>
+            <div class="card-body">
+                <p class="card-text">You can update the details of the students here:</p>
+                <button class="btn">
+                    <a href="{% url 'update_student'  %}" target="_blank" class="link-button">Update</a>  
+                </button>
+            </div>
+        </div>
+        
+        
+        <div class="card text-bg-info">
+            <div class="card-header">Delete Student Data</div>
+            <div class="card-body">
+                <p class="card-text">You can delete the data of the students here</p>
+                <button class="btn">
+                    <a href="{% url 'delete' %}" target="_blank" class="link-button">Delete</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
